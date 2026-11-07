@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "YouSheBiaoTiHei";
+  src: url("./assets/YouSheBiaoTiHei.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --color-paper: #f5f1e8;
+  --color-ink: #111111;
+  --color-muted: #8c877d;
+  --color-accent: #c73e3a;
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-display: "YouSheBiaoTiHei", "Geist", sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: #f5f1e8;
+  color: #111111;
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(199, 62, 58, 0.16);
+}
+
+/* mono-label：全大写小号等宽注脚（系列作品语言） */
+.mono-label {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* 暂停呼吸：时间数字轻微明暗 */
+@keyframes breath {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.animate-breath {
+  animation: breath 2.4s ease-in-out infinite;
+}
+
+/* 结束跳动：圆环轻微 scale 脉冲两下 */
+@keyframes ring-pulse {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.035);
+  }
+  55% {
+    transform: scale(0.995);
+  }
+  80% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.animate-ring-pulse {
+  animation: ring-pulse 1.1s ease-in-out;
+  transform-origin: center;
+}
+
+/* 滚动条极简化 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(17, 17, 17, 0.2);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-breath,
+  .animate-ring-pulse {
+    animation: none;
+  }
+}
